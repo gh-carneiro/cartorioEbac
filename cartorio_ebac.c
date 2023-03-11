@@ -109,49 +109,68 @@ int deletarNome()
 int main()
 {
 	int laco = 0; // Declaração da variável para o laço for
-	for(laco = 0; laco == 0;) // Início do laço for
+	char senhaDigitada[10] = "a"; // Declaração da string para armazenar a senha
+	int comparacao; // Declaração da variável que armazena o resultado de comparação entre strings
+	
+	setlocale(LC_ALL, "Portuguese"); // Definição da linguagem para o Português
+	
+	printf("### Cartório da EBAC ###\n\n");
+	printf("Login do administrador:\n\n");
+	printf("Digite a senha: \n");
+	scanf("%s",senhaDigitada);
+	
+	comparacao = strcmp(senhaDigitada, "admin"); // Comparação entre as strings senhaDigitada e "admin", se verdadeiro retorna 0
+	
+	if(comparacao == 0) // Se comparação for verdadeiro executa o restante do programa
 	{
-		int opcao = 0; // Declaração da variável que armazena a opção do usuário
-		setlocale(LC_ALL, "Portuguese"); // Definição da linguagem para o Português
-		
-		system("cls"); // Limpa a tela do terminal
-		
-		printf("### Cartório da EBAC ###\n\n"); // Início do menu
-		
-		printf("Escolha uma das opções do menu:\n\n");
-		printf("\t1 - Adicionar nome\n");
-		printf("\t2 - Consultar nome\n");
-		printf("\t3 - Deletar nome\n"); // Fim do menu
-		printf("\t4 - Sair do sistema\n\n"); // Fim do menu
-		
-		printf("Opção: "); 
-		scanf("%d", &opcao); // Entrada do valor digitado pelo usuário
-		
-		system("cls"); // Limpa a tela do terminal
-		
-		switch(opcao) // Verificação da opção digitada pelo usuário
+		system("cls");
+		for(laco = 0; laco == 0;) // Início do laço for
 		{
-			case 1: // Caso digitado a opção 1
-			registrarNome();
-			break;
+			int opcao = 0; // Declaração da variável que armazena a opção do usuário
+			setlocale(LC_ALL, "Portuguese"); // Definição da linguagem para o Português
 			
-			case 2: // Caso digitado a opção 2
-			consultarNome();
-			break;
+			system("cls"); // Limpa a tela do terminal
 			
-			case 3: // Caso digitado a opção 3
-			deletarNome();
-			break;
+			printf("### Cartório da EBAC ###\n\n"); // Início do menu
 			
-			case 4:
-			printf("Obrigado por utilizar o sistema de registro da EBAC!\n");
-			return 0;
-			break;
+			printf("Escolha uma das opções do menu:\n\n");
+			printf("\t1 - Adicionar nome\n");
+			printf("\t2 - Consultar nome\n");
+			printf("\t3 - Deletar nome\n"); // Fim do menu
+			printf("\t4 - Sair do sistema\n\n"); // Fim do menu
 			
-			default: // Caso digitado uma opção que não esteja definida
-			printf("Esta opção não está disponível!\n");
-			system("pause");
-			break;
-		}
-	} // Fim do laço for
+			printf("Opção: "); 
+			scanf("%d", &opcao); // Entrada do valor digitado pelo usuário
+			
+			system("cls"); // Limpa a tela do terminal
+			
+			switch(opcao) // Verificação da opção digitada pelo usuário
+			{
+				case 1: // Caso digitado a opção 1
+				registrarNome();
+				break;
+				
+				case 2: // Caso digitado a opção 2
+				consultarNome();
+				break;
+				
+				case 3: // Caso digitado a opção 3
+				deletarNome();
+				break;
+				
+				case 4:
+				printf("Obrigado por utilizar o sistema de registro da EBAC!\n");
+				return 0;
+				break;
+				
+				default: // Caso digitado uma opção que não esteja definida
+				printf("Esta opção não está disponível!\n");
+				system("pause");
+				break;
+			}
+		} // Fim do laço for
+	}else // Se não exibe a mensagem
+	{
+		printf("Senha digitada incorreta!\n");
+	}
 }
